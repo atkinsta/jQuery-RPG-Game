@@ -1,37 +1,77 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
 /* Setting up the sprite containers for spritely to use*/
 #skeleton {
     height: 350px;
     width: 406.77px;
     background-image: url("../images/sprites/skeleton.png");
     z-index: 2;
-    -webkit-filter: drop-shadow(5px 5px 5px #222);
-    filter: drop-shadow(5px 5px 5px #222); 
-
 }
 
 #bandit {
     height: 400px;
     width: 384px;
-    background-image: url("../images/sprites/bandit.png");
-    -webkit-filter: drop-shadow(5px 5px 5px #222);
-    filter: drop-shadow(5px 5px 5px #222); 
+    background-image: url("../images/sprites/bandit.png")
 }
 
 #adventurer {
     height: 370px;
     width: 500px;
-    background-image: url("../images/sprites/adventurer.png");
-    -webkit-filter: drop-shadow(5px 5px 5px #222);
-    filter: drop-shadow(5px 5px 5px #222); 
+    background-image: url("../images/sprites/adventurer.png") 
 }
 
 #rogue {
     height: 350px;
     width: 560px;
-    background-image: url("../images/sprites/rogue.png");
+    background-image: url("../images/sprites/rogue.png")
+}
+
+#skeleton, 
+#bandit, 
+#adventurer, 
+#rogue {
     -webkit-filter: drop-shadow(5px 5px 5px #222);
     filter: drop-shadow(5px 5px 5px #222); 
 }
+
+.hover:hover {
+    -webkit-filter: drop-shadow(5px 5px 5px rgb(244, 255, 90));
+    filter: drop-shadow(5px 5px 5px rgb(244, 255, 90)); 
+}
+
+.flipped {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+ }
+.container {
+    height: 100%;
+    position: relative;
+}
+.onground {
+    position: relative;
+    top: 30%;
+}
+
+.statusbar{
+    width: 80%;
+    height: 150px;
+    background-color: white;
+    margin: 0 auto;
+}
+
+ #fight {
+    background-image: url("../images/backgrounds/background3.png");
+    background-attachment: fixed;
+    background-position: center bottom;
+ }
+
 
 
 

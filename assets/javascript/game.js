@@ -1,3 +1,4 @@
+//Animating the sprites when they attack
 $("#skeleton").sprite({
     fps: 10,
     no_of_frames: 18,
