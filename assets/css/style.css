@@ -1,59 +1,39 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Setting up the sprite containers for spritely to use*/
+#skeleton {
+    height: 350px;
+    width: 406.77px;
+    background-image: url("../images/sprites/skeleton.png");
+    z-index: 2;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222); 
+
 }
 
-html,
-body {
-width: 100%;
-height: 100%;
+#bandit {
+    height: 400px;
+    width: 384px;
+    background-image: url("../images/sprites/bandit.png");
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222); 
 }
 
-.container {
-position: relative;
-width: 100%;
-height: 100%;
-background: none;
+#adventurer {
+    height: 370px;
+    width: 500px;
+    background-image: url("../images/sprites/adventurer.png");
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222); 
 }
 
-.container .col-md-12, .characters{
-background-color: none;
-color: red;
-padding: 0;
-width: 90%;
-position: absolute;
-transform: translate(-50%, -50%);
-left: 50%;
-top: 50%;
+#rogue {
+    height: 350px;
+    width: 560px;
+    background-image: url("../images/sprites/rogue.png");
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222); 
 }
 
-.imageholder {
-    float:left;
-}
 
-.imageholder img {
-    max-width: 200px;
-    max-height: 200px;
-    margin: 0 auto;
-}
 
-#fight {
-    background-image: url("../images/Backgrounds/background.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center bottom;
-    height: 100%;
-    width: 100%;
-}
 
-.playercontainer img, .enemycontainer img {
-    max-height: 300px;
-    position: fixed;
-    bottom: 80px;
-}
-
-.col-md-4 {
-    height: 100%;
-}
 
