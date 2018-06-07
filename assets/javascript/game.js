@@ -51,23 +51,35 @@ var player = {
 };
 
 function attack() {
-    var locator = "#" + player.character.id;
-    $(locator.toString()).spToggle();
     player.currentEnemy.currentHealth -= player.character.damage;
-    counterAttack();      
-    fightDisplay(); 
+    toggleAnimation();
+    counterAttack();
+    fightDisplay();
     player.character.damage += 10;
-    if (player.currentEnemy.currentHealth <= 0){
-        sessionStorage.setItem((player.currentEnemy.id).toString() + "Dead", "true");
-        var tempObj = JSON.parse(sessionStorage.getItem("pCharacter"));
-        tempObj.currentHealth = player.character.currentHealth;
-        tempObj.damage = player.character.damage;
-        sessionStorage.setItem("pCharacter", JSON.stringify(tempObj));
-        $("#status").prepend("<h2 style='color: gold'>YOU WIN!</p>");
-        setTimeout(function(){
-            window.location.href = "challenge.html";
-        }, 1000);
+    if (player.currentEnemy.currentHealth <= 0) {
+        disableAttack(1000);
+        storeVariables();
+        if (sessionStorage.getItem("winTracker") == "111") {
+            $("#status").prepend("<h2 style='color: gold'>YOU BEAT EVERYONE!</p>");
+            setTimeout(function () {
+                window.location.href = "winner.html";
+            }, 1000);
+        }
+        else {
+            $("#status").prepend("<h2 style='color: gold'>YOU WIN!</p>");
+            setTimeout(function () {
+                window.location.href = "challenge.html";
+            }, 1000);
+        }
+
     }
+}
+
+function disableAttack(time) {    
+    $("#attackbutton").prop("disabled", true);
+    setInterval(function() {
+        $("#attackbutton").prop("disabled",false);
+    }, time)
 }
 
 function counterAttack() {
@@ -76,9 +88,9 @@ function counterAttack() {
     player.character.currentHealth -= player.currentEnemy.counterDamage;
 }
 
-function fightDisplay () {
-    $("#ehealth").attr("style", "width: " + (player.currentEnemy.currentHealth/player.currentEnemy.maxHealth) * 100 + "%;");
-    $("#phealth").attr("style", "width: " + (player.character.currentHealth/player.character.maxHealth) * 100 + "%;");
+function fightDisplay() {
+    $("#ehealth").attr("style", "width: " + (player.currentEnemy.currentHealth / player.currentEnemy.maxHealth) * 100 + "%;");
+    $("#phealth").attr("style", "width: " + (player.character.currentHealth / player.character.maxHealth) * 100 + "%;");
     $("#status").prepend("<p style='float: left; color: green; width: 48%;'> You dealt " + player.character.damage + " damage! </p>");
     $("#status").prepend("<p style='float: right; color: red; width: 48%'> The enemy dealt " + player.currentEnemy.counterDamage + " damage! </p>");
     $("#status").prepend("<p style='color: gold;'> You have " + player.character.currentHealth + " HP remaining! </p>");
@@ -92,7 +104,7 @@ function animateLoad() {
             obj.spToggle();
         }
     });
-    
+
     $("#adventurer").sprite({
         fps: 10,
         no_of_frames: 5,
@@ -100,7 +112,7 @@ function animateLoad() {
             obj.spToggle();
         }
     });
-    
+
     $("#bandit").sprite({
         fps: 10,
         no_of_frames: 8,
@@ -108,7 +120,7 @@ function animateLoad() {
             obj.spToggle(true);
         }
     });
-    
+
     $("#rogue").sprite({
         fps: 10,
         no_of_frames: 10,
@@ -147,8 +159,18 @@ function setupFight() {
     $(".enemyid").attr("id", player.currentEnemy.id);
 }
 
-function loadCharacterValues() {
-    JSON.parse(pCharacter).currentHealth = sessionStorage.getItem("pHealth")
+function toggleAnimation() {
+    var locator = "#" + player.character.id;
+    $(locator.toString()).spToggle();
+}
+
+function storeVariables() {
+    sessionStorage.setItem((player.currentEnemy.id).toString() + "Dead", "true");
+    var tempObj = JSON.parse(sessionStorage.getItem("pCharacter"));
+    tempObj.currentHealth = player.character.currentHealth;
+    tempObj.damage = player.character.damage;
+    sessionStorage.setItem("pCharacter", JSON.stringify(tempObj));
+    sessionStorage.setItem("winTracker", sessionStorage.getItem("winTracker") + 1);
 }
 
 // On click section, have most event handlers here. 
@@ -183,7 +205,7 @@ $(".challenger").on("click", function () {
     if (challenged === "adventurer")
         if (adventurer.isDead == "true")
             alert("Character is dead!")
-        else {           
+        else {
             sessionStorage.setItem("eCharacter", JSON.stringify(adventurer));
             window.location.href = "fight.html";
             animateLoad();
@@ -200,7 +222,7 @@ $(".challenger").on("click", function () {
         if (skeleton.isDead == "true") {
             alert("Character is dead!");
         }
-        else  {           
+        else {
             sessionStorage.setItem("eCharacter", JSON.stringify(skeleton));
             window.location.href = "fight.html";
             animateLoad();
@@ -215,7 +237,7 @@ $(".challenger").on("click", function () {
         }
 });
 
-window.onload = function() {
+window.onload = function () {
     placeChallengers();
     setupFight();
     animateLoad();
