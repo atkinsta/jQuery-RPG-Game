@@ -47,6 +47,11 @@ body {
     filter: drop-shadow(5px 5px 5px rgb(244, 255, 90));
 }
 
+#characterlist {
+    position: absolute;
+    bottom: 0;
+}
+
 .flipped {
     -moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
@@ -110,6 +115,6 @@ body {
 #characterselect {
     background-image: url("../images/backgrounds/backgroundcs.png");
     background-position: center bottom;
-    background-size: 100% auto;
+    /* background-size: 100% auto; */
     background-repeat: no-repeat;
 }
