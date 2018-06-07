@@ -7,7 +7,7 @@ animateLoad();
 //Game objects go here
 var skeleton = {
     id: "skeleton",
-    isDead: false,
+    isDead: sessionStorage.getItem("skeletonDead"),
     maxHealth: 500,
     damageTaken: 0,
     currentHealth: 500,
@@ -17,7 +17,7 @@ var skeleton = {
 
 var adventurer = {
     id: "adventurer",
-    isDead: false,
+    isDead: sessionStorage.getItem("adventurerDead"),
     maxHealth: 500,
     damageTaken: 0,
     currentHealth: 500,
@@ -28,7 +28,7 @@ var adventurer = {
 var rogue = {
     id: "rogue",
     maxHealth: 450,
-    isDead: false,
+    isDead: sessionStorage.getItem("rogueDead"),
     damageTaken: 0,
     currentHealth: 450,
     damage: 10,
@@ -38,7 +38,7 @@ var rogue = {
 var bandit = {
     id: "bandit",
     maxHealth: 450,
-    isDead: false,
+    isDead: sessionStorage.getItem("banditDead"),
     damageTaken: 0,
     currentHealth: 450,
     damage: 10,
@@ -58,9 +58,15 @@ function attack() {
     fightDisplay(); 
     player.character.damage += 10;
     if (player.currentEnemy.currentHealth <= 0){
-        player.currentEnemy.isDead = true;
-        sessionStorage.setItem("pHealth", player.character.currentHealth);
-        sessionStorage.setItem("pDamage", player.character.damage);
+        sessionStorage.setItem((player.currentEnemy.id).toString() + "Dead", "true");
+        var tempObj = JSON.parse(sessionStorage.getItem("pCharacter"));
+        tempObj.currentHealth = player.character.currentHealth;
+        tempObj.damage = player.character.damage;
+        sessionStorage.setItem("pCharacter", JSON.stringify(tempObj));
+        $("#status").prepend("<h2 style='color: gold'>YOU WIN!</p>");
+        setTimeout(function(){
+            window.location.href = "challenge.html";
+        }, 1000);
     }
 }
 
@@ -142,7 +148,7 @@ function setupFight() {
 }
 
 function loadCharacterValues() {
-    JSON.parse(pCharacter).currentHealth = sessionStorage.getItem("pHealth");
+    JSON.parse(pCharacter).currentHealth = sessionStorage.getItem("pHealth")
 }
 
 // On click section, have most event handlers here. 
@@ -175,37 +181,38 @@ $("#startbutton").on("click", function () {
 $(".challenger").on("click", function () {
     var challenged = $(this).attr("value");
     if (challenged === "adventurer")
-        if (adventurer.isDead === false) {
+        if (adventurer.isDead == "true")
+            alert("Character is dead!")
+        else {           
             sessionStorage.setItem("eCharacter", JSON.stringify(adventurer));
             window.location.href = "fight.html";
             animateLoad();
         }
-        else
-            alert("Character is dead!")
-    else if (challenged === "bandit")
-        if (bandit.isDead === false) {
-            sessionStorage.setItem("eCharacter", JSON.stringify(adventurer));
+    else if (challenged == "bandit")
+        if (bandit.isDead == "true")
+            alert("Character is dead!");
+        else {
+            sessionStorage.setItem("eCharacter", JSON.stringify(bandit));
             window.location.href = "fight.html";
             animateLoad();
         }
-        else
-            alert("Character is dead!")
     else if (challenged === "skeleton")
-        if (skeleton.isDead === false) {
+        if (skeleton.isDead == "true") {
+            alert("Character is dead!");
+        }
+        else  {           
             sessionStorage.setItem("eCharacter", JSON.stringify(skeleton));
             window.location.href = "fight.html";
             animateLoad();
         }
-        else
-            alert("Character is dead!")
     else if (challenged === "rogue")
-        if (rogue.isDead === false) {
+        if (rogue.isDead == "true")
+            alert("Character is dead!");
+        else {
             sessionStorage.setItem("eCharacter", JSON.stringify(rogue));
             window.location.href = "fight.html";
             animateLoad();
         }
-        else
-            alert("Character is dead!")
 });
 
 window.onload = function() {
