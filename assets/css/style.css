@@ -3,7 +3,9 @@ body {
     height: 100%;
     width: 100%;
 }
+
 /* Setting up the sprite containers for spritely to use*/
+
 #skeleton {
     height: 350px;
     width: 406.77px;
@@ -20,7 +22,7 @@ body {
 #adventurer {
     height: 370px;
     width: 500px;
-    background-image: url("../images/sprites/adventurer.png") 
+    background-image: url("../images/sprites/adventurer.png")
 }
 
 #rogue {
@@ -29,17 +31,20 @@ body {
     background-image: url("../images/sprites/rogue.png")
 }
 
-#skeleton, 
-#bandit, 
-#adventurer, 
+#skeleton,
+#bandit,
+#adventurer,
 #rogue {
     -webkit-filter: drop-shadow(5px 5px 5px #222);
-    filter: drop-shadow(5px 5px 5px #222); 
+    filter: drop-shadow(5px 5px 5px #222);
 }
 
-.hover:hover {
+#skeleton:hover,
+#bandit:hover,
+#adventurer:hover,
+#rogue:hover {
     -webkit-filter: drop-shadow(5px 5px 5px rgb(244, 255, 90));
-    filter: drop-shadow(5px 5px 5px rgb(244, 255, 90)); 
+    filter: drop-shadow(5px 5px 5px rgb(244, 255, 90));
 }
 
 .flipped {
@@ -49,31 +54,62 @@ body {
     transform: scaleX(-1);
     filter: FlipH;
     -ms-filter: "FlipH";
- }
+}
+
 .container {
     height: 100%;
     position: relative;
 }
-.onground {
-    position: relative;
-    top: 30%;
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
-.statusbar{
+.fullfixed {
+    position: relative;
+    height: auto;
+}
+
+.onground {
+    position: fixed;
+    bottom: 30%;
+}
+
+.statusbar {
     width: 80%;
-    height: 150px;
-    background-color: white;
+    height: auto;
+    background-color: none;
     margin: 0 auto;
 }
 
- #fight {
-    background-image: url("../images/backgrounds/background3.png");
+.progress-bar {
+    background-color: red;
+}
+
+#attackbutton {
+    background-color: gray;
+    padding: 30px 80px;
+    margin-top: 1%;
+}
+
+#fight {
+    background-image: url("../images/backgrounds/fight.png");
     background-attachment: fixed;
     background-position: center bottom;
- }
+}
 
+#indexbackground {
+    background-image: url("../images/backgrounds/backgroundindex.png");
+    background-position: center bottom;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}
 
-
-
-
-
+#characterselect {
+    background-image: url("../images/backgrounds/backgroundcs.png");
+    background-position: center bottom;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}

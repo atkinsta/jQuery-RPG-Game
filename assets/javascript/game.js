@@ -30,3 +30,5 @@ $("#rogue").sprite({
         obj.spStop();
     }
 })
+
+$("#phealth").attr("style", "width:" + (235/550)*100 + "%;");

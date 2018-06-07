@@ -13,30 +13,51 @@
 </head>
 
 <body id="fight">
-    <div class="container fixed-bottom">
+    <div class="container clearfix">
         <div class="row statusbar">
-
-        </div>
-
-        <div class="col-md-4 onground">
-            <div id="skeleton">
+            <div class="col-md-4">
+                <h3 class="health">Player Health</h3>
+                <div class="progress">
+                    <div id="phealth" class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <button class="btn btn-lg" id="attackbutton">Attack!</button>
+                </div>
 
             </div>
+            <div class="col-md-4">
+                <h3 style="text-align: right;" class="health">Enemy Health</h3>
+                <div class="progress">
+                    <div id="ehealth" class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-4 emptyspace fixed-bottom">
 
-        </div>
-        <div class="col-md-4 onground">
-            <div class="flipped" id="adventurer">
+        <div class="row fullfixed">
+            <div class="col-md-4 full fixed-bottom">
+                <div class="onground" id="skeleton">
 
+                </div>
+            </div>
+            <div class="col-md-4 full emptyspace fixed-bottom">
+
+            </div>
+            <div class="col-md-4 full fixed-bottom">
+                <div class="flipped onground" id="adventurer">
+
+                </div>
             </div>
         </div>
 
     </div>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.spritely/0.6.8/jquery.spritely.js"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.spritely/0.6.8/jquery.spritely.js"></script>
     <script src="assets/javascript/game.js"></script>
 </body>
 
