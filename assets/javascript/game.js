@@ -21,7 +21,7 @@ $("#bandit").sprite({
     on_last_frame: function (obj) {
         obj.spStop();
     }
-})
+});
 
 $("#rogue").sprite({
     fps: 10,
@@ -29,7 +29,7 @@ $("#rogue").sprite({
     on_last_frame: function (obj) {
         obj.spStop();
     }
-})
+});
 
 
 //Game objects go here
@@ -50,6 +50,15 @@ var adventurer = {
     }
 };
 
+var rogue = {
+    maxHealth: 450,
+    currentHealth: 450,
+    damage: Math.floor(Math.random() * 130),
+    attack: function () {
+        $("#rogue").spToggle();
+    }
+};
+
 var player = {
     character: skeleton,
     currentEnemy: adventurer
@@ -62,6 +71,9 @@ $("#attackbutton").on("click", function () { //Side note, I was blown away this 
     $("#ehealth").attr("style", "width:" + (player.currentEnemy.currentHealth/player.currentEnemy.maxHealth) * 100 + "%;"); //TODO: Replace with a screen display function. 
     console.log(adventurer.currentHealth);
 })
+$(".characteroption").on("mouseover", function () {
+    $('[data-toggle="popover"]').popover();
+});
 
 $(".characteroption").on("click", function () {         // Logs the players character choice and moves them onto the challenge section.
     player.character = $(this).attr("value");           // $(this) refers to the value of the specific .characteroption we clicked on.
