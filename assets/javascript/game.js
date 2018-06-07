@@ -1,4 +1,4 @@
-//Animating the sprites when they attack
+//Animating the sprites when they attack, have these set up to load with the page because 1. it looks cool, and 2. need to have them toggled off at start. 
 $("#skeleton").sprite({
     fps: 10,
     no_of_frames: 18,
@@ -32,7 +32,7 @@ $("#rogue").sprite({
 })
 
 
-
+//Game objects go here
 var skeleton = {
     maxHealth: 500,
     currentHealth: 500,
@@ -55,19 +55,20 @@ var player = {
     currentEnemy: adventurer
 };
 
-$("#attackbutton").on("click", function () {
+// On click section, have most event handlers here. 
+$("#attackbutton").on("click", function () { //Side note, I was blown away this works. So many references to keys in other objects. 
     player.character.attack();
     player.currentEnemy.currentHealth -= player.character.damage;
-    $("#ehealth").attr("style", "width:" + (player.currentEnemy.currentHealth/player.currentEnemy.maxHealth) * 100 + "%;");
+    $("#ehealth").attr("style", "width:" + (player.currentEnemy.currentHealth/player.currentEnemy.maxHealth) * 100 + "%;"); //TODO: Replace with a screen display function. 
     console.log(adventurer.currentHealth);
 })
 
-$(".characteroption").on("click", function () {
-    player.character = $(this).attr("value");
+$(".characteroption").on("click", function () {         // Logs the players character choice and moves them onto the challenge section.
+    player.character = $(this).attr("value");           // $(this) refers to the value of the specific .characteroption we clicked on.
     console.log(player.character);
     window.location.href = "challenge.html";
 })
 
-$(".startbutton").on("click", function () {
+$("#startbutton").on("click", function () {
     window.location.href = "characterselect.html";
 })

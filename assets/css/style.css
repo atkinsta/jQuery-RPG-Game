@@ -1,3 +1,8 @@
+/*Preamble, I did NOT focus on responsiveness for this project. Reason being, the sprites sheets needed to have divs that were the exact size of the sprite.
+  This means that without re-rendering all the sprites for many different sizes, it's a bit rough. If I have time, I will get around to making sprite sheets
+  for multple sizes. But if you're reading this then I probably didn't have time. :/ */
+
+
 html,
 body {
     height: 100%;
@@ -5,7 +10,6 @@ body {
 }
 
 /* Setting up the sprite containers for spritely to use*/
-
 #skeleton {
     height: 350px;
     width: 406.77px;
@@ -103,18 +107,30 @@ body {
     background-image: url("../images/backgrounds/fight.png");
     background-attachment: fixed;
     background-position: center bottom;
+    background-size: cover;
 }
 
 #indexbackground {
     background-image: url("../images/backgrounds/backgroundindex.png");
     background-position: center bottom;
-    background-size: 100% auto;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
 #characterselect {
     background-image: url("../images/backgrounds/backgroundcs.png");
     background-position: center bottom;
-    /* background-size: 100% auto; */
+    background-size: cover;
     background-repeat: no-repeat;
+}
+
+h1 {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 8em;
+    color: #ddd
+}
+
+h3 {
+    font-family: 'MedievalSharp', cursive;
+    color: #ddd;
 }
