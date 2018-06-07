@@ -12,6 +12,7 @@ var skeleton = {
     damageTaken: 0,
     currentHealth: 500,
     damage: 10,
+    counterDamage: 20
 };
 
 var adventurer = {
@@ -21,6 +22,7 @@ var adventurer = {
     damageTaken: 0,
     currentHealth: 500,
     damage: 10,
+    counterDamage: 20
 };
 
 var rogue = {
@@ -30,6 +32,7 @@ var rogue = {
     damageTaken: 0,
     currentHealth: 450,
     damage: 10,
+    counterDamage: 20
 };
 
 var bandit = {
@@ -37,8 +40,9 @@ var bandit = {
     maxHealth: 450,
     isDead: false,
     damageTaken: 0,
-    currentHealth: 0,
+    currentHealth: 450,
     damage: 10,
+    counterDamage: 20
 };
 
 var player = {
@@ -49,6 +53,29 @@ var player = {
 function attack() {
     var locator = "#" + player.character.id;
     $(locator.toString()).spToggle();
+    player.currentEnemy.currentHealth -= player.character.damage;
+    counterAttack();      
+    fightDisplay(); 
+    player.character.damage += 10;
+    if (player.currentEnemy.currentHealth <= 0){
+        player.currentEnemy.isDead = true;
+        sessionStorage.setItem("pHealth", player.character.currentHealth);
+        sessionStorage.setItem("pDamage", player.character.damage);
+    }
+}
+
+function counterAttack() {
+    var locator = "#" + player.currentEnemy.id;
+    $(locator.toString()).spToggle();
+    player.character.currentHealth -= player.currentEnemy.counterDamage;
+}
+
+function fightDisplay () {
+    $("#ehealth").attr("style", "width: " + (player.currentEnemy.currentHealth/player.currentEnemy.maxHealth) * 100 + "%;");
+    $("#phealth").attr("style", "width: " + (player.character.currentHealth/player.character.maxHealth) * 100 + "%;");
+    $("#status").prepend("<p style='float: left; color: green; width: 48%;'> You dealt " + player.character.damage + " damage! </p>");
+    $("#status").prepend("<p style='float: right; color: red; width: 48%'> The enemy dealt " + player.currentEnemy.counterDamage + " damage! </p>");
+    $("#status").prepend("<p style='color: gold;'> You have " + player.character.currentHealth + " HP remaining! </p>");
 }
 
 function animateLoad() {
@@ -112,6 +139,10 @@ function placeChallengers() {                                                   
 function setupFight() {
     $(".playerid").attr("id", player.character.id);
     $(".enemyid").attr("id", player.currentEnemy.id);
+}
+
+function loadCharacterValues() {
+    JSON.parse(pCharacter).currentHealth = sessionStorage.getItem("pHealth");
 }
 
 // On click section, have most event handlers here. 
