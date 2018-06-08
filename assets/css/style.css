@@ -153,7 +153,9 @@ body {
 h1 {
     font-family: 'MedievalSharp', cursive;
     font-size: 8em;
-    color: #ddd
+    color: #ddd;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222);
 }
 
 /* #challenge h1 {
