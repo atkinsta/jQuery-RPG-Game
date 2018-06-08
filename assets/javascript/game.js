@@ -8,41 +8,45 @@ animateLoad();
 var skeleton = {
     id: "skeleton",
     isDead: sessionStorage.getItem("skeletonDead"),
-    maxHealth: 500,
+    maxHealth: 400,
     damageTaken: 0,
-    currentHealth: 500,
+    currentHealth: 400,
     damage: 10,
-    counterDamage: 20
+    damageMultipler: 1.15,
+    counterDamage: 12
 };
 
 var adventurer = {
     id: "adventurer",
     isDead: sessionStorage.getItem("adventurerDead"),
-    maxHealth: 500,
+    maxHealth: 300,
     damageTaken: 0,
-    currentHealth: 500,
+    currentHealth: 300,
     damage: 10,
-    counterDamage: 20
+    damageMultipler: 1.2,
+    counterDamage: 15
 };
 
 var rogue = {
     id: "rogue",
-    maxHealth: 450,
+    maxHealth: 200,
     isDead: sessionStorage.getItem("rogueDead"),
     damageTaken: 0,
-    currentHealth: 450,
-    damage: 10,
-    counterDamage: 20
+    currentHealth: 200,
+    damage: 14,
+    damageMultipler: 1.25,
+    counterDamage: 28
 };
 
 var bandit = {
     id: "bandit",
-    maxHealth: 450,
+    maxHealth: 325,
     isDead: sessionStorage.getItem("banditDead"),
     damageTaken: 0,
-    currentHealth: 450,
-    damage: 10,
-    counterDamage: 20
+    currentHealth: 325,
+    damage: 12,
+    damageMultipler: 1.1,
+    counterDamage: 22
 };
 
 var player = {
@@ -55,7 +59,7 @@ function attack() {
     toggleAnimation();
     counterAttack();
     fightDisplay();
-    player.character.damage += 10;
+    player.character.damage = Math.round(player.character.damage * player.character.damageMultipler);
     if (player.currentEnemy.currentHealth <= 0) {
         disableAttack(1000);
         storeVariables();
@@ -68,9 +72,15 @@ function attack() {
         else {
             $("#status").prepend("<h2 style='color: gold'>YOU WIN!</p>");
             setTimeout(function () {
-                window.location.href = "challenge.html";
+                alert("You beat all the characters. If you would like to play again, close the tab and reopen it to reset everything. Thanks for playing!");
             }, 1000);
         }
+    }
+    else if (player.character.currentHealth <= 0) {
+        $("#status").prepend("h2 style='color: red'YOU LOSE :(</p>");
+        setTimeout(function () {
+            alert("You lost, but thanks for playing. Close the browser and refresh to play again. This game uses session storage so you need to close the window. Good luck next time!");
+        }, 1500)
 
     }
 }
@@ -178,7 +188,7 @@ $("#attackbutton").on("click", function () { //Side note, I was blown away this 
     attack();
 });
 
-$(".characteroption").on("mouseover", function () {
+$(".characteroption, .characterinfo").on("mouseover", function () {
     $('[data-toggle="popover"]').popover();
 });
 

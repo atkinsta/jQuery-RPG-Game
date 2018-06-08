@@ -134,8 +134,10 @@ body {
     background-repeat: no-repeat;
 }
 
-#challenge {
-    background-color: #333;
+#challengebackground {
+    background-image: url("../images/backgrounds/backgroundchallenge.png");
+    background-position: center bottom;
+    background-size: cover;
 }
 
 ::-webkit-scrollbar {

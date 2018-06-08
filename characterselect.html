@@ -17,13 +17,21 @@
     <div style="margin: 0 5%; height: 100%;" class="wrapper clearfix">
         <div class="row">
             <h1 class="text-center">Please choose your character</h1>
+            <button type="button" class="btn btn-secondary characterinfo" style="margin: 10px 45%;" data-container="body" data-toggle="popover"
+                data-html=true data-trigger="hover" data-placement="bottom" title="Character Stats" data-content="
+            Adventurer - Health: 300, Damage: 10, DamageMultiplier: 1.2, Counter Damage: 12 <br>
+            Skeleton - Health: 400, Damage: 10, DamageMultiplier: 1.2, Counter Damage: 15. <br>
+            Bandit - Health: 325, Damage: 12, DamageMultiplier: 1.1, Counter Damage: 22. <br>
+            Rogue - Health: 200, Damage: 14, DamageMultiplier: 1.25, Counter Damage: 28.<br>">
+                Hover for Character Stats!
+            </button>
         </div>
 
 
         <div id="characterlist" class="row">
             <div class="col-md-3">
-                <div class="characteroption" value="adventurer" id="adventurer" data-toggle="popover" title="Adventurer!" data-trigger="hover" data-placement="top" 
-                     data-content="The adventurer is the 'Average Joe' of the group. He has standard attack and standard health. His name is Gregg.">
+                <div class="characteroption" value="adventurer" id="adventurer" data-toggle="popover" title="Adventurer!" data-trigger="hover"
+                    data-placement="top" data-content="The adventurer is the 'Average Joe' of the group. He has standard attack and standard health. His name is Gregg.">
 
                 </div>
                 <h3 style="text-align: center;">Adventurer</h3>
@@ -31,8 +39,8 @@
 
 
             <div class="col-md-3">
-                <div class="characteroption" value="skeleton" id="skeleton" data-toggle="popover" title="Adventurer!" data-trigger="hover" data-placement="top" 
-                data-content="The adventurer is the 'Average Joe' of the group. He has standard attack and standard health. His name is Gregg.">
+                <div class="characteroption" value="skeleton" id="skeleton" data-toggle="popover" title="Skeleton!" data-trigger="hover"
+                    data-placement="top" data-content="The Skeleton is the tankiest character but be careful who you pick a 'bone' with, his damage is not that good!">
 
                 </div>
                 <h3 style="text-align: center;">Skeleton</h3>
@@ -40,15 +48,15 @@
 
 
             <div class="col-md-3">
-                <div class="flipped characteroption" value="rogue" id="rogue" data-toggle="popover" title="Adventurer!" data-trigger="hover" data-placement="top" 
-                data-content="The adventurer is the 'Average Joe' of the group. He has standard attack and standard health. His name is Gregg.">
+                <div class="flipped characteroption" value="rogue" id="rogue" data-toggle="popover" title="Warlock!" data-trigger="hover"
+                    data-placement="top" data-content="The warlock is the glass cannon. Does tons of damage but has a low life poor. Beneath the mask, he enjoys Mexican Wrestling and attending astophysics lectures.">
 
                 </div>
                 <h3 style="text-align: center;">Warlock</h3>
             </div>
             <div class="col-md-3">
-                <div class="characteroption" value="bandit" id="bandit" data-toggle="popover" title="Adventurer!" data-trigger="hover" data-placement="top" 
-                data-content="The adventurer is the 'Average Joe' of the group. He has standard attack and standard health. His name is Gregg.">
+                <div class="characteroption" value="bandit" id="bandit" data-toggle="popover" title="Bandit!" data-trigger="hover" data-placement="top"
+                    data-content="The bandit is a starts comes out swining with good base stats, watch out for his counter! Also watch out for your wallet because he's shady as hell.">
 
                 </div>
                 <h3 style="text-align: center;">Bandit</h3>
