@@ -64,7 +64,7 @@ function attack() {
     fightDisplay();
     player.character.damage = Math.round(player.character.damage * player.character.damageMultipler);
     if (player.currentEnemy.currentHealth <= 0) {
-        disableAttack(1000);
+        disableAttack(1500);
         storeVariables();
         if (sessionStorage.getItem("winTracker") == "111") {
             $("#status").prepend("<h2 style='color: gold'>YOU BEAT EVERYONE!</p>");
