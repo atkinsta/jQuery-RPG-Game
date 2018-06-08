@@ -60,10 +60,7 @@ var player = {
 function attack() {
     player.currentEnemy.currentHealth -= player.character.damage;
     toggleAnimation();
-    setTimeout(function() {
-        counterAttack()
-    }, 750); 
-    // counterAttack();
+    counterAttack();
     fightDisplay();
     player.character.damage = Math.round(player.character.damage * player.character.damageMultipler);
     if (player.currentEnemy.currentHealth <= 0) {
