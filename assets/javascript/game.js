@@ -66,18 +66,18 @@ function attack() {
         if (sessionStorage.getItem("winTracker") == "111") {
             $("#status").prepend("<h2 style='color: gold'>YOU BEAT EVERYONE!</p>");
             setTimeout(function () {
-                window.location.href = "winner.html";
-            }, 1000);
+                alert("You beat all the characters. If you would like to play again, close the tab and reopen it to reset everything. Thanks for playing!");
+            }, 1500);
         }
         else {
             $("#status").prepend("<h2 style='color: gold'>YOU WIN!</p>");
             setTimeout(function () {
-                alert("You beat all the characters. If you would like to play again, close the tab and reopen it to reset everything. Thanks for playing!");
-            }, 1000);
+                window.location.href = "challenge.html";
+            }, 1500);
         }
     }
     else if (player.character.currentHealth <= 0) {
-        $("#status").prepend("h2 style='color: red'YOU LOSE :(</p>");
+        $("#status").prepend("<h2 style='color: red'> YOU LOSE :(</h2>");
         setTimeout(function () {
             alert("You lost, but thanks for playing. Close the browser and refresh to play again. This game uses session storage so you need to close the window. Good luck next time!");
         }, 1500)
@@ -183,6 +183,11 @@ function storeVariables() {
     sessionStorage.setItem("winTracker", sessionStorage.getItem("winTracker") + 1);
 }
 
+function loadHPBars() {
+    $("#ehealth").attr("style", "width: " + (player.currentEnemy.currentHealth / player.currentEnemy.maxHealth) * 100 + "%;");
+    $("#phealth").attr("style", "width: " + (player.character.currentHealth / player.character.maxHealth) * 100 + "%;");
+}
+
 // On click section, have most event handlers here. 
 $("#attackbutton").on("click", function () { //Side note, I was blown away this works. So many references to keys in other objects. 
     attack();
@@ -250,6 +255,7 @@ $(".challenger").on("click", function () {
 window.onload = function () {
     placeChallengers();
     setupFight();
+    loadHPBars();
     animateLoad();
 };
 
