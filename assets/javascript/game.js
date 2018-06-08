@@ -1,5 +1,8 @@
-// json stringify
-// json parse
+// There are tons of features I would still like to add. Unfortuntely I'm out of time. 
+// TOADD: Make defeated characters darker on challenge screen.
+// TOADD: Maybe set an attack delay so it doesn't interupt the animation if you spam click.
+// TODO: Add a proper win/lose screen. Alerts work but a bit of a hot-fix.
+// TODO: COMMENT EVERYTHINGGGGGGGGGGGG
 
 //Animating the sprites when they attack, have these set up to load with the page because 1. it looks cool, and 2. need to have them toggled off at start. 
 animateLoad();
@@ -7,7 +10,7 @@ animateLoad();
 //Game objects go here
 var skeleton = {
     id: "skeleton",
-    isDead: sessionStorage.getItem("skeletonDead"),
+    isDead: sessionStorage.getItem("skeletonDead"),             //Stores this for use in challenge screen
     maxHealth: 400,
     damageTaken: 0,
     currentHealth: 400,
