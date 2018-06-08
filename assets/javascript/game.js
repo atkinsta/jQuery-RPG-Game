@@ -67,6 +67,7 @@ function attack() {
         disableAttack(1500);
         storeVariables();
         if (sessionStorage.getItem("winTracker") == "111") {
+            $("#attackbutton").prop("disabled", true);
             $("#status").prepend("<h2 style='color: gold'>YOU BEAT EVERYONE!</p>");
             setTimeout(function () {
                 alert("You beat all the characters. If you would like to play again, close the tab and reopen it to reset everything. Thanks for playing!");
@@ -80,6 +81,7 @@ function attack() {
         }
     }
     else if (player.character.currentHealth <= 0) {
+        $("#attackbutton").prop("disabled", true);
         $("#status").prepend("<h2 style='color: red'> YOU LOSE :(</h2>");
         setTimeout(function () {
             alert("You lost, but thanks for playing. Close the browser and refresh to play again. This game uses session storage so you need to close the window. Good luck next time!");
