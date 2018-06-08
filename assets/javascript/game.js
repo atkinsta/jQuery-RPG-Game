@@ -1,6 +1,6 @@
 // There are tons of features I would still like to add. Unfortuntely I'm out of time. 
 // TOADD: Make defeated characters darker on challenge screen.
-// TOADD: Maybe set an attack delay so it doesn't interupt the animation if you spam click.
+// TOADD: Maybe set an attack delay so it doesn't interupt the animation if you spam click.  
 // TODO: Add a proper win/lose screen. Alerts work but a bit of a hot-fix.
 // TODO: COMMENT EVERYTHINGGGGGGGGGGGG
 
@@ -60,7 +60,10 @@ var player = {
 function attack() {
     player.currentEnemy.currentHealth -= player.character.damage;
     toggleAnimation();
-    counterAttack();
+    setTimeout(function() {
+        counterAttack()
+    }, 750); 
+    // counterAttack();
     fightDisplay();
     player.character.damage = Math.round(player.character.damage * player.character.damageMultipler);
     if (player.currentEnemy.currentHealth <= 0) {
@@ -88,7 +91,7 @@ function attack() {
     }
 }
 
-function disableAttack(time) {    
+function disableAttack(time) {   
     $("#attackbutton").prop("disabled", true);
     setInterval(function() {
         $("#attackbutton").prop("disabled",false);
